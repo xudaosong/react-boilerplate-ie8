@@ -1,6 +1,6 @@
 import React from 'react'
 import CSSModules from 'react-css-modules'
-import styles from './Preview.scss'
+import styles from './Preview.css'
 
 @CSSModules(styles, {allowMultiple: true})
 export default class Preview extends React.Component {
