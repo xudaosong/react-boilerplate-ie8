@@ -12,12 +12,16 @@ import {Link} from 'react-router'
   push
 })
 export default class Home extends Component {
+  static propTypes = {
+    push: React.PropTypes.func
+  }
+
   render() {
     const {push} = this.props
     return (
       <div>
         Home
-        <PreviewList {...this.props} />
+        <PreviewList {...this.props}/>
         <Link to="/detail/1">detail</Link>
         <button onClick={() => push('/detail/2')}>go detail</button>
       </div>

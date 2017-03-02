@@ -7,9 +7,7 @@ import {routerReducer} from 'react-router-redux/lib/reducer'
 import routerMiddleware from 'react-router-redux/lib/middleware'
 import FetchMiddleware from '../middleware/redux-composable-fetch'
 
-const finalCreateStore = compose(
-  applyMiddleware(ThunkMiddleware, FetchMiddleware, routerMiddleware(hashHistory), createLogger())
-)(createStore)
+const finalCreateStore = compose(applyMiddleware(ThunkMiddleware, FetchMiddleware, routerMiddleware(hashHistory), createLogger()))(createStore)
 
 const reducer = combineReducers({
   ...rootReducer,
