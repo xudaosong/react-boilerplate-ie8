@@ -13,7 +13,7 @@ export function loadArticles() {
     types: [
       LOAD_ARTICLES, LOAD_ARTICLES_SUCCESS, LOAD_ARTICLES_ERROR
     ],
-    url: '/api/articles.json'
+    url: '/articles'
   }
 }
 

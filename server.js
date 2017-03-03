@@ -1,10 +1,12 @@
 /*eslint no-console:0 */
 'use strict';
 const path = require('path');
-const express = require('express');;
+const express = require('express');
 const webpack = require('webpack');
 const config = require('./webpack.config');
 const open = require('open');
+
+// let server = jsonServer.create()
 
 /**
  * Flag indicating whether webpack compiled for the first time.
@@ -15,7 +17,7 @@ let app = express();
 
 const compiler = webpack(config);
 
-app.use(express.static(path.join(__dirname, '/')))
+app.use(express.static(path.join(__dirname, '/')));
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -23,6 +25,14 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
+
+if(process.argv.join(' ').indexOf(' --mock') > 0){
+  const jsonServer = require('json-server');
+  let router = jsonServer.router('./mock/db.json');
+  let middlewares = jsonServer.defaults();
+  app.use(middlewares)
+  app.use(router)
+}
 
 app.listen(8000, function(err) {
   if (err) {
