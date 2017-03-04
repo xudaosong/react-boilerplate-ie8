@@ -5,24 +5,24 @@ import rootReducer from './reducers'
 import {hashHistory} from 'react-router'
 import {routerReducer} from 'react-router-redux/lib/reducer'
 import routerMiddleware from 'react-router-redux/lib/middleware'
-// import FetchMiddleware from '../middleware/redux-composable-fetch-old'
-import {createFetchMiddleware} from '../middleware/redux-composable-fetch/index'
-
-const FetchMiddleware = createFetchMiddleware({
-  afterFetch({action, result}) {
-    if (result.status !== 200) {
-      // let reason = {
-      //   action,
-      //   error: '请求失败'
-      // }
-      // Promise.reject(reason)
-      throw new Error('请求失败')
-    }
-    return result.json().then(data => {
-      return Promise.resolve({action, result: data})
-    })
-  }
-})
+import FetchMiddleware from '../middleware/redux-fetch-middleware'
+// import {createFetchMiddleware} from '../middleware/redux-composable-fetch'
+//
+// const FetchMiddleware = createFetchMiddleware({
+//   afterFetch({action, result}) {
+//     if (result.status !== 200) {
+//       // let reason = {
+//       //   action,
+//       //   error: '请求失败'
+//       // }
+//       // Promise.reject(reason)
+//       throw new Error('请求失败')
+//     }
+//     return result.json().then(data => {
+//       return Promise.resolve({action, result: data})
+//     })
+//   }
+// })
 
 const finalCreateStore = compose(applyMiddleware(ThunkMiddleware, FetchMiddleware, routerMiddleware(hashHistory), createLogger()))(createStore)
 
