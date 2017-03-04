@@ -24,10 +24,13 @@ module.exports = {
     alias: {
       actions: `${defaultSettings.srcPath}/actions/`,
       components: `${defaultSettings.srcPath}/components/`,
-      sources: `${defaultSettings.srcPath}/sources/`,
-      stores: `${defaultSettings.srcPath}/stores/`,
-      styles: `${defaultSettings.srcPath}/styles/`,
       config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV,
+      layouts: `${defaultSettings.srcPath}/layouts/`,
+      middleware: `${defaultSettings.srcPath}/middleware/`,
+      stores: `${defaultSettings.srcPath}/stores/`,
+      utils: `${defaultSettings.srcPath}/utils/`,
+      styles: `${defaultSettings.srcPath}/styles/`,
+      views: `${defaultSettings.srcPath}/utils/`,
       'react/lib/ReactMount': 'react-dom/lib/ReactMount'
     }
   },

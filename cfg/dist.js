@@ -4,11 +4,10 @@ let path = require('path');
 let webpack = require('webpack');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
-
 let config = Object.assign({}, baseConfig, {
   entry: path.join(__dirname, '../src/index'),
   cache: false,
-  devtool: 'sourcemap',
+  devtool: false,
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
