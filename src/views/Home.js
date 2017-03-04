@@ -6,7 +6,11 @@ import {push} from 'react-router-redux/lib/actions'
 import {Link} from 'react-router'
 
 @connect(state => {
-  return {articleList: state.home.list.articleList}
+  return {
+    articleList: state.home.list.articleList,
+    error: state.home.list.error,
+    loading: state.home.list.loading
+  }
 }, {
   ...actions,
   push
