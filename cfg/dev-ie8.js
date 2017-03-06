@@ -16,7 +16,8 @@ let config = Object.assign({}, baseConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  module: defaultSettings.getDefaultModules()
+  module: defaultSettings.getDefaultModules(),
+  postcss: defaultSettings.getDefaultPostcss
 });
 
 config.module.loaders.push({

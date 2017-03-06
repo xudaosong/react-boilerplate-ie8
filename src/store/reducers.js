@@ -1,4 +1,4 @@
-import home from '../views/HomeRedux'
+import home from '../views/homeRedux'
 
 export default {
   home

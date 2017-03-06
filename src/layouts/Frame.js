@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './Nav'
+import Nav from './nav'
 
 class Frame extends React.Component {
   static propTypes = {

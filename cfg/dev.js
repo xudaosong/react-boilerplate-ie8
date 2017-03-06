@@ -14,7 +14,8 @@ let config = Object.assign({}, baseConfig, {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(), new webpack.HotModuleReplacementPlugin(), new webpack.NoErrorsPlugin()
   ],
-  module: defaultSettings.getDefaultModules()
+  module: defaultSettings.getDefaultModules(),
+  postcss: defaultSettings.getDefaultPostcss
 });
 
 config.module.loaders.push({

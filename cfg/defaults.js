@@ -3,6 +3,8 @@
 const path = require('path');
 const srcPath = path.join(__dirname, '/../src');
 const defaultPort = 8000;
+let postcssModulesValue = require('postcss-modules-values');
+let autoprefixer = require('autoprefixer');
 
 function getDefaultModules() {
   return {
@@ -16,13 +18,23 @@ function getDefaultModules() {
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        exclude: path.resolve(__dirname, '/../src/styles'),
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+      }, {
+        test: /\.css$/,
+        include: path.resolve(__dirname, '/../src/styles'),
+        loader: 'style-loader!css-loader!postcss-loader'
       }, {
         test: /\.sass/,
         loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'
       }, {
         test: /\.scss/,
-        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
+        exclude: path.resolve(__dirname, '/../src/styles'),
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader?outputStyle=expanded!postcss-loader'
+      }, {
+        test: /\.scss/,
+        include: path.resolve(__dirname, '/../src/styles'),
+        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded!postcss-loader'
       }, {
         test: /\.less/,
         loader: 'style-loader!css-loader!less-loader'
@@ -41,9 +53,17 @@ function getDefaultModules() {
   };
 }
 
+function getDefaultPostcss() {
+  return [
+    postcssModulesValue,
+    autoprefixer({ browsers: ["> 5%", "ie >= 8"] })
+  ]
+}
+
 module.exports = {
   srcPath: srcPath,
   publicPath: '/assets/',
   port: defaultPort,
-  getDefaultModules: getDefaultModules
+  getDefaultModules: getDefaultModules,
+  getDefaultPostcss: getDefaultPostcss
 };

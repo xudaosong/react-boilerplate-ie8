@@ -1,6 +1,6 @@
 import React from 'react'
 import {Router, Route, IndexRoute} from 'react-router'
-import Frame from '../layouts/Frame'
+import Frame from '../layouts/frame'
 
 // import Home from '../views/Home'
 // import Detail from '../views/Detail'
@@ -16,12 +16,12 @@ import Frame from '../layouts/Frame'
 
 const Home = (location, callback) => {
   require.ensure([], require => {
-    callback(null, require('../views/Home'))
+    callback(null, require('../views/home'))
   }, 'Home')
 }
 const Detail = (location, callback) => {
   require.ensure([], require => {
-    callback(null, require('../views/Detail'))
+    callback(null, require('../views/detail'))
   }, 'Detail')
 }
 const routes = history => (

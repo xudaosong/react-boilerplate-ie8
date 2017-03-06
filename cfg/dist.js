@@ -24,21 +24,11 @@ let config = Object.assign({}, baseConfig, {
           comments: false
       }
     }),
-    // new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin()
-    // new webpack.optimize.DedupePlugin(),
-    // new webpack.DefinePlugin({'process.env.NODE_ENV': '"production"'}),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compressor: {
-    //     warnings: false
-    //   }
-    // }),
-    // new webpack.optimize.OccurenceOrderPlugin(),
-    // new webpack.optimize.AggressiveMergingPlugin(),
-    // new webpack.NoErrorsPlugin()
   ],
-  module: defaultSettings.getDefaultModules()
+  module: defaultSettings.getDefaultModules(),
+  postcss: defaultSettings.getDefaultPostcss
 });
 
 // Add needed loaders to the defaults here

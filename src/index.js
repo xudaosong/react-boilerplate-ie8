@@ -1,4 +1,5 @@
 require('es6-promise').polyfill()
+import 'styles/app.css'
 
 const React = require('react')
 const render = require('react-dom').render
