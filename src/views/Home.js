@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import PreviewList from '../components/Home/PreviewList'
-import {actions} from './HomeRedux'
+import PreviewList from 'components/preview/previewList'
+import {actions} from './homeRedux'
 import {push} from 'react-router-redux/lib/actions'
 import {Link} from 'react-router'
 
