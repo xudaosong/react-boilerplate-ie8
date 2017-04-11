@@ -30,7 +30,7 @@ module.exports = {
       stores: `${defaultSettings.srcPath}/stores/`,
       utils: `${defaultSettings.srcPath}/utils/`,
       styles: `${defaultSettings.srcPath}/styles/`,
-      views: `${defaultSettings.srcPath}/utils/`,
+      views: `${defaultSettings.srcPath}/views/`,
       'react/lib/ReactMount': 'react-dom/lib/ReactMount'
     }
   },

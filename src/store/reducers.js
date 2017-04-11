@@ -1,5 +1,7 @@
-import home from '../views/homeRedux'
+import home from 'views/homeRedux'
+import news from 'views/newsRedux'
 
 export default {
-  home
+  home,
+  news
 }

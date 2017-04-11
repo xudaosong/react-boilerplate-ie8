@@ -5,7 +5,8 @@ import rootReducer from './reducers'
 import {hashHistory} from 'react-router'
 import {routerReducer} from 'react-router-redux/lib/reducer'
 import routerMiddleware from 'react-router-redux/lib/middleware'
-import FetchMiddleware from '../middleware/redux-fetch-middleware'
+import FetchMiddleware from 'middleware/redux-fetch-middleware'
+import promiseMiddleware from 'middleware/redux-promise-middleware'
 // import {createFetchMiddleware} from '../middleware/redux-composable-fetch'
 //
 // const FetchMiddleware = createFetchMiddleware({
@@ -24,7 +25,13 @@ import FetchMiddleware from '../middleware/redux-fetch-middleware'
 //   }
 // })
 
-const finalCreateStore = compose(applyMiddleware(ThunkMiddleware, FetchMiddleware, routerMiddleware(hashHistory), createLogger()))(createStore)
+const finalCreateStore = compose(applyMiddleware(
+  ThunkMiddleware,
+  FetchMiddleware,
+  routerMiddleware(hashHistory),
+  promiseMiddleware({promiseTypeSuffixes: ['PENDING', 'SUCCESS', 'ERROR']}),
+  createLogger()
+))(createStore)
 
 const reducer = combineReducers({
   ...rootReducer,

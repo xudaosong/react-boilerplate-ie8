@@ -34,12 +34,12 @@ if(process.argv.join(' ').indexOf(' --mock') > 0){
   app.use(router)
 }
 
-app.listen(8000, function(err) {
+app.listen(8080, function(err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('Listening at http://localhost:8000');
+  console.log('Listening at http://localhost:8080');
 });
 
 // new WebpackDevServer(compiler, config.devServer)
