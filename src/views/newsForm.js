@@ -13,7 +13,6 @@ import {actions} from './newsRedux'
 })
 export default class NewsF extends Component {
   render() {
-    console.log(this.props)
     return (
       <div>
         <h1>News Form</h1>
