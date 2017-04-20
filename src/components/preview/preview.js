@@ -9,7 +9,6 @@ export default class Preview extends React.Component {
     date: React.PropTypes.string,
     description: React.PropTypes.string,
     title: React.PropTypes.string,
-    link: React.PropTypes.string,
     push: React.PropTypes.func
   }
 
