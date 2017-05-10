@@ -1,0 +1,8 @@
+.article {
+  background: #eee;
+  border: 1px #999 solid;
+  margin: 20px 0;
+  & .date, & .title, & .desc {
+    color: var(--color2);
+  }
+}

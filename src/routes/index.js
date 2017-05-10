@@ -1,34 +1,26 @@
 import React from 'react'
 import {Router, Route, IndexRoute} from 'react-router'
-import Frame from 'layouts/frame'
+import Frame from 'modules/shared/layouts/frame'
+import Intl from 'i18n/intl'
 
-const Home = (location, callback) => {
+const ExampleList = (location, callback) => {
   require.ensure([], require => {
-    callback(null, require('views/home'))
-  }, 'Home')
+    callback(null, require('modules/example/list'))
+  }, 'ExampleList')
 }
-const News = (location, callback) => {
+const ExampleDetail = (location, callback) => {
   require.ensure([], require => {
-    callback(null, require('views/news'))
-  }, 'News')
+    callback(null, require('modules/example/detail'))
+  }, 'ExampleDetail')
 }
-const NewsForm = (location, callback) => {
-  require.ensure([], require => {
-    callback(null, require('views/newsForm'))
-  }, 'NewsForm')
-}
-const Detail = (location, callback) => {
-  require.ensure([], require => {
-    callback(null, require('views/detail'))
-  }, 'Detail')
-}
+
 const routes = history => (
   <Router history={history}>
-    <Route path="/" component={Frame}>
-      <IndexRoute getComponent={Home}/>
-      <Route path="/news" getComponent={News}/>
-      <Route path="/news/add" getComponent={NewsForm}/>
-      <Route path="/detail/:id" getComponent={Detail}/>
+    <Route component={Intl}>
+      <Route path='/' component={Frame}>
+        <IndexRoute getComponent={ExampleList} />
+        <Route path='/detail/:id' getComponent={ExampleDetail} />
+      </Route>
     </Route>
   </Router>
 )

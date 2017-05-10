@@ -1,7 +1,6 @@
-import home from 'views/homeRedux'
-import news from 'views/newsRedux'
+import { combineReducers } from 'redux'
+import { reducers as exampleReducers } from 'modules/example'
 
-export default {
-  home,
-  news
-}
+export default combineReducers({
+  ...exampleReducers
+})

@@ -10,7 +10,7 @@ let config = Object.assign({}, baseConfig, {
     'webpack-hot-middleware/client?reload=true', './src/index'
   ],
   cache: true,
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(), new webpack.HotModuleReplacementPlugin(), new webpack.NoErrorsPlugin()
   ],

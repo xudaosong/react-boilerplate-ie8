@@ -38,10 +38,4 @@ config.module.loaders.push({
   include: [path.join(__dirname, '/../src')]
 });
 
-config.module.postLoaders.push({
-  test: /\.(js|jsx)$/,
-  loaders: ['es3ify-loader'],
-  include: [path.join(__dirname, '/../src')]
-});
-
 module.exports = config;

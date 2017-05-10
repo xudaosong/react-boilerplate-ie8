@@ -22,15 +22,15 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      actions: `${defaultSettings.srcPath}/actions/`,
-      components: `${defaultSettings.srcPath}/components/`,
       config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV,
-      layouts: `${defaultSettings.srcPath}/layouts/`,
-      middleware: `${defaultSettings.srcPath}/middleware/`,
-      stores: `${defaultSettings.srcPath}/stores/`,
+      i18n: `${defaultSettings.srcPath}/i18n/`,
+      modules: `${defaultSettings.srcPath}/modules/`,
+      routes: `${defaultSettings.srcPath}/routes/`,
+      static: `${defaultSettings.srcPath}/static/`,
+      store: `${defaultSettings.srcPath}/store/`,
+      theme: `${defaultSettings.srcPath}/theme/`,
       utils: `${defaultSettings.srcPath}/utils/`,
-      styles: `${defaultSettings.srcPath}/styles/`,
-      views: `${defaultSettings.srcPath}/views/`,
+      lib: path.join(__dirname, '/../lib/'),
       'react/lib/ReactMount': 'react-dom/lib/ReactMount'
     }
   },

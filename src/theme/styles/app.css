@@ -1,0 +1,7 @@
+@import 'reset.css';
+/*全局样式*/
+
+html {
+  font-size: 14px;
+  background: resolve('example.jpg');
+}

@@ -3,8 +3,6 @@
 const path = require('path');
 const srcPath = path.join(__dirname, '/../src');
 const defaultPort = 8000;
-let postcssModulesValue = require('postcss-modules-values');
-let autoprefixer = require('autoprefixer');
 
 function getDefaultModules() {
   return {
@@ -18,11 +16,11 @@ function getDefaultModules() {
     loaders: [
       {
         test: /\.css$/,
-        exclude: path.resolve(__dirname, '/../src/styles'),
-        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+        exclude: path.resolve(__dirname, '/../src/theme/styles'),
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]!postcss-loader'
       }, {
         test: /\.css$/,
-        include: path.resolve(__dirname, '/../src/styles'),
+        include: path.resolve(__dirname, '/../src/theme/styles'),
         loader: 'style-loader!css-loader!postcss-loader'
       }, {
         test: /\.sass/,
@@ -49,14 +47,35 @@ function getDefaultModules() {
         loader: 'file-loader'
       }
     ],
-    postLoaders: []
+    postLoaders: [{
+      test: /\.(js|jsx)$/,
+      loaders: ['es3ify-loader'],
+      include: [path.join(__dirname, '/../src')]
+    }]
   };
 }
-
+const browsers = ["> 5%", "ie >= 8"]
 function getDefaultPostcss() {
   return [
-    postcssModulesValue,
-    autoprefixer({ browsers: ["> 5%", "ie >= 8"] })
+    require('postcss-import')({
+      path: srcPath + '/theme/styles'
+    }),
+    require('postcss-assets')({
+      relative: true,
+      loadPaths: [srcPath + '/static/images']
+    }),
+    require('postcss-cssnext')({
+      browsers,
+      features: {
+        customProperties: {
+          variables: require(srcPath + '/theme/styles/variables.json')
+        },
+        autoprefixer: true
+      }
+    }),
+    // require('autoprefixer')({ browsers: browsers }),
+    require('postcss-browser-reporter'),
+    require('postcss-reporter')
   ]
 }
 

@@ -5,6 +5,7 @@ const express = require('express');
 const webpack = require('webpack');
 const config = require('./webpack.config');
 const open = require('open');
+const rewriteJson = require('./mock/routes.json')
 
 // let server = jsonServer.create()
 
@@ -30,7 +31,9 @@ if(process.argv.join(' ').indexOf(' --mock') > 0){
   const jsonServer = require('json-server');
   let router = jsonServer.router('./mock/db.json');
   let middlewares = jsonServer.defaults();
+  let rewriter = jsonServer.rewriter(rewriteJson);
   app.use(middlewares)
+  app.use(rewriter)
   app.use(router)
 }
 
