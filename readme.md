@@ -14,7 +14,7 @@ react-boilerplate-ie8是基于React，能在IE8运行的脚手架，它具有以
 
 ## 如何使用
 1. 本机需要安装node和git
-3. git clone http://git.sdp.nd/fed/react-boilerplate.git
+3. git clone https://github.com/xudaosong/react-boilerplate-ie8.git
 4. npm install
 5. npm run ie8:mock
 
